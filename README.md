@@ -1,14 +1,16 @@
-\# Serverless Cloud Security Monitoring Platform
+\# Cloud Security Monitoring Platform
 
 
 
 \## Overview
 
-A serverless cloud security monitoring platform built on AWS using Terraform, Lambda, CloudWatch Logs, Metric Filters, and Dashboarding.
+
+
+A serverless cloud security monitoring platform built using AWS, Terraform, and DevSecOps practices.
 
 
 
-This project simulates cloud security events and converts them into actionable monitoring metrics for security observability.
+The platform simulates real-world cloud security threats and monitors them using AWS CloudWatch dashboards and automated security pipelines.
 
 
 
@@ -20,39 +22,23 @@ This project simulates cloud security events and converts them into actionable m
 
 
 
-\- Infrastructure as Code using Terraform
-
-\- AWS Lambda based event simulation
-
-\- Structured JSON security logs
+\- AWS Lambda based threat simulation
 
 \- CloudWatch log monitoring
 
-\- Custom metric filters
+\- CloudWatch security dashboard
 
-\- Security event dashboards
+\- SNS alert integration
 
+\- Terraform Infrastructure as Code
 
+\- GitHub Actions CI/CD pipeline
 
-\---
+\- Checkov IaC security scanning
 
+\- Bandit Python security scanning
 
-
-\## Tech Stack
-
-
-
-\- AWS Lambda
-
-\- CloudWatch Logs
-
-\- CloudWatch Metrics
-
-\- Terraform
-
-\- Python
-
-\- AWS CLI
+\- Structured JSON threat logs
 
 
 
@@ -60,29 +46,23 @@ This project simulates cloud security events and converts them into actionable m
 
 
 
-\## Architecture
-
-
-
-Lambda → CloudWatch Logs → Metric Filters → CloudWatch Metrics → Dashboard
-
-
-
-\---
-
-
-
-\## Simulated Security Events
+\## Simulated Threats
 
 
 
 \- Failed Login Attempts
 
-\- Suspicious IP Activity
+\- Brute Force Attacks
+
+\- Privilege Escalation
+
+\- Suspicious IP Detection
+
+\- Malware Activity
 
 \- Unauthorized API Calls
 
-\- Multiple Login Failures
+\- Data Exfiltration
 
 
 
@@ -90,21 +70,89 @@ Lambda → CloudWatch Logs → Metric Filters → CloudWatch Metrics → Dashboa
 
 
 
-\## Future Improvements
+\## Technologies Used
 
 
 
-\- GitHub Actions CI/CD
+\- AWS Lambda
 
-\- DevSecOps Scanning
+\- AWS CloudWatch
 
-\- Docker Integration
+\- AWS SNS
 
-\- Grafana Dashboard
+\- Terraform
 
-\- Terraform Modules
+\- Python
 
-\- Real-time Alerting
+\- GitHub Actions
+
+\- Checkov
+
+\- Bandit
+
+
+
+\---
+
+
+
+\## DevSecOps Pipeline
+
+
+
+The project includes automated CI/CD security checks:
+
+
+
+\- Terraform formatting validation
+
+\- Infrastructure security scanning
+
+\- Python code security scanning
+
+
+
+\---
+
+
+
+\## Dashboard Monitoring
+
+
+
+CloudWatch Dashboard provides:
+
+
+
+\- High severity threat counts
+
+\- Threat trend visualization
+
+\- Live log monitoring
+
+\- Security analytics
+
+
+
+\---
+
+
+
+\## Future Enhancements
+
+
+
+\- Docker security scanning
+
+\- Kubernetes runtime security
+
+\- Falco integration
+
+\- SIEM integration
+
+\- EKS deployment
+
+\- Grafana dashboards
 
 
 
@@ -117,4 +165,6 @@ Lambda → CloudWatch Logs → Metric Filters → CloudWatch Metrics → Dashboa
 
 
 Vatsal Sharma
+
+Cloud Security \& DevSecOps Enthusiast
 

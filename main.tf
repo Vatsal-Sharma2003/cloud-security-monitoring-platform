@@ -3,7 +3,8 @@ provider "aws" {
 }
 
 resource "aws_sns_topic" "alerts" {
-  name = "vatsal-alerts"
+  name              = "vatsal-alerts"
+  kms_master_key_id = "alias/aws/sns"
 }
 
 resource "aws_sns_topic_subscription" "email" {
@@ -36,10 +37,17 @@ resource "aws_lambda_function" "alert_lambda" {
   function_name = "vatsal-alert-lambda"
   role          = aws_iam_role.lambda_role.arn
   handler       = "index.handler"
-  runtime       = "python3.9"
+
+  runtime = "python3.13"
 
   filename         = "lambda.zip"
   source_code_hash = filebase64sha256("lambda.zip")
+
+  reserved_concurrent_executions = 10
+
+  tracing_config {
+    mode = "Active"
+  }
 }
 resource "aws_iam_role_policy_attachment" "lambda_sns" {
   role       = aws_iam_role.lambda_role.name

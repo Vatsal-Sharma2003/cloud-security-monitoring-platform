@@ -1,0 +1,35 @@
+name: DevSecOps Security Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  security-checks:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+
+    - name: Terraform Format Check
+      run: terraform fmt -check
+
+    - name: Terraform Init
+      run: terraform init
+
+    - name: Terraform Validate
+      run: terraform validate
+
+    - name: Run Checkov Scan
+      uses: bridgecrewio/checkov-action@master
+
+    - name: Run Bandit Scan
+      run: |
+        pip install bandit
+        bandit -r lambda/

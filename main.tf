@@ -33,11 +33,13 @@ resource "aws_iam_role_policy_attachment" "lambda_basic" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 
-#checkov:skip=CKV_AWS_272: Code signing not required for demo project
-#checkov:skip=CKV_AWS_116: DLQ skipped for lightweight monitoring demo
-#checkov:skip=CKV_AWS_117: Lambda intentionally kept outside VPC for simplicity
 
 resource "aws_lambda_function" "alert_lambda" {
+
+  #checkov:skip=CKV_AWS_272: Demo project without code signing
+  #checkov:skip=CKV_AWS_116: DLQ intentionally skipped
+  #checkov:skip=CKV_AWS_117: VPC intentionally skipped
+
   function_name = "vatsal-alert-lambda"
   role          = aws_iam_role.lambda_role.arn
   handler       = "index.handler"
@@ -53,6 +55,7 @@ resource "aws_lambda_function" "alert_lambda" {
     mode = "Active"
   }
 }
+
 resource "aws_iam_role_policy_attachment" "lambda_sns" {
   role       = aws_iam_role.lambda_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonSNSFullAccess"

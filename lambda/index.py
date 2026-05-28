@@ -1,36 +1,23 @@
-﻿import json
+﻿from flask import Flask, jsonify
+from datetime import datetime, UTC
 import random
-from datetime import datetime
 
-def handler(event, context):
+app = Flask(__name__)
 
-    attack_types = [
-        "FAILED_LOGIN",
-        "BRUTE_FORCE_ATTACK",
-        "PRIVILEGE_ESCALATION",
-        "SUSPICIOUS_IP",
-        "MALWARE_ACTIVITY",
-        "UNAUTHORIZED_API_CALL",
-        "DATA_EXFILTRATION"
-    ]
+@app.route("/")
+def home():
 
-    severity_levels = ["LOW", "MEDIUM", "HIGH", "CRITICAL"]
-
-    event_data = {
-        "timestamp": str(datetime.utcnow()),
-        "event_type": random.choice(attack_types),
-        "severity": random.choice(severity_levels),
+    event = {
+        "timestamp": str(datetime.now(UTC)),
+        "event_type": "UNAUTHORIZED_API_CALL",
+        "severity": "HIGH",
         "source_ip": f"192.168.1.{random.randint(1,255)}",
         "username": f"user{random.randint(100,999)}",
         "region": "ap-south-1",
         "message": "Simulated cloud security threat detected"
     }
 
-    print(json.dumps(event_data))
+    return jsonify(event)
 
-    return {
-        "statusCode": 200,
-        "body": json.dumps("Advanced security event generated")
-    }
 if __name__ == "__main__":
-    handler({}, {})
+    app.run(host="0.0.0.0", port=5000)

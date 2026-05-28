@@ -45,6 +45,7 @@ resource "aws_lambda_function" "alert_lambda" {
   handler       = "index.handler"
 
   runtime = "python3.13"
+  reserved_concurrent_executions = 10
 
   filename         = "lambda.zip"
   source_code_hash = filebase64sha256("lambda.zip")

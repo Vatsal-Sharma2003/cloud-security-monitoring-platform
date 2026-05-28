@@ -5,4 +5,3 @@ WORKDIR /app
 COPY lambda/index.py /app/app.py
 
 CMD ["python", "app.py"]
-# clean rebuild

@@ -49,7 +49,6 @@ resource "aws_lambda_function" "alert_lambda" {
   filename         = "lambda.zip"
   source_code_hash = filebase64sha256("lambda.zip")
 
-  reserved_concurrent_executions = 10
 
   tracing_config {
     mode = "Active"
